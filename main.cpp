@@ -24,7 +24,7 @@ void print(auto& x){
     std::cout << std::endl;
 }
 
-std::vector<std::string> Concatination(std::vector<int> L1, std::vector<char> L2){
+std::vector<std::string> Concatenation(std::vector<int> L1, std::vector<char> L2){
     std::vector<std::string> L3;
     for (int x : L1) {
         for (char y : L2) {
@@ -43,7 +43,7 @@ int main() {
 
     L1 = language1(L1);
     L2 = language2(L2);
-    L3 = Concatination(L1, L2);
+    L3 = Concatenation(L1, L2);
 
     print(L1);
     print(L2);
