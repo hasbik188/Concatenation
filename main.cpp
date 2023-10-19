@@ -2,34 +2,18 @@
 #include <vector>
 #include <string>
 
-std::vector<int> language1(std::vector<int>& L1){
-    for(int i = 0; i < 26; i++)
-        L1.push_back(i);
-    return L1;
-}
-
-std::vector<char> language2(std::vector<char>& L2){
-    char letter='a';
-    for (int i = 0; i < 26; i++) {
-        L2.push_back(letter);
-        letter++;
-    }
-    return L2;
-}
-
-void print(auto& x){
-    for (int i = 0; i < x.size(); i++) {
-        std::cout << x[i] << ' ';
+void print(std::vector<std::string>& x) {
+    for (std::string& s : x) {
+        std::cout << s << ' ';
     }
     std::cout << std::endl;
 }
 
-std::vector<std::string> Concatenation(std::vector<int> L1, std::vector<char> L2){
+std::vector<std::string> Concatenation(const std::vector<std::string>& L1, const std::vector<std::string>& L2) {
     std::vector<std::string> L3;
-    for (int x : L1) {
-        for (char y : L2) {
-            std::string result;
-            result = std::to_string(x) + y;
+    for (const std::string& x : L1) {
+        for (const std::string& y : L2) {
+            std::string result = x + y;
             L3.push_back(result);
         }
     }
@@ -37,12 +21,31 @@ std::vector<std::string> Concatenation(std::vector<int> L1, std::vector<char> L2
 }
 
 int main() {
-    std::vector<int> L1;
-    std::vector<char> L2;
+    std::vector<std::string> L1;
+    std::vector<std::string> L2;
     std::vector<std::string> L3;
 
-    L1 = language1(L1);
-    L2 = language2(L2);
+    std::string x;
+    std::string y;
+
+    std::cout << "Введите цепочки для первого языка L1, при завершении заполнения напишите слово EXIT" << std::endl;
+    while (true) {
+        std::cin >> x;
+        if (x == "EXIT") {
+            break;
+        }
+        L1.push_back(x);
+    }
+
+    std::cout << "Введите цепочки для второго языка L2, при завершении заполнения напишите слово EXIT" << std::endl;
+    while (true) {
+        std::cin >> y;
+        if (y == "EXIT") {
+            break;
+        }
+        L2.push_back(y);
+    }
+
     L3 = Concatenation(L1, L2);
 
     print(L1);
